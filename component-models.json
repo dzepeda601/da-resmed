@@ -251,6 +251,31 @@
     ]
   },
   {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Content",
+        "valueType": "string",
+        "description": "Heading, description, and call-to-action link"
+      }
+    ]
+  },
+  {
     "id": "video",
     "fields": [
       {

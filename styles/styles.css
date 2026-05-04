@@ -11,64 +11,92 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
+  /* colors - ResMed brand palette */
+  --background-color: #fff;
   --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --dark-color: #0d0a15;
+  --text-color: #212529;
+  --link-color: #0073e6;
+  --link-hover-color: #004ba6;
+
+  /* brand accent colors */
+  --color-blue: #0073e6;
+  --color-blue-dark: #004ba6;
+  --color-blue-extra-light: #d0e8ff;
+  --color-red: #e6004a;
+  --color-red-dark: #b6003c;
+  --color-red-extra-light: #ffd1d3;
+  --color-magenta: #bc299b;
+  --color-magenta-dark: #8a036d;
+  --color-magenta-extra-light: #ffdef8;
+  --color-purple-extra-light: #d7d7ff;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: 'Plus Jakarta Sans', plus-jakarta-sans-fallback, sans-serif;
+  --heading-font-family: 'Plus Jakarta Sans', plus-jakarta-sans-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 15px;
+  --body-font-size-xs: 14px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* heading sizes (mobile-first) */
+  --heading-font-size-xxl: 36px;
+  --heading-font-size-xl: 30px;
+  --heading-font-size-l: 26px;
+  --heading-font-size-m: 22px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 18px;
 
   /* nav heights */
   --nav-height: 64px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
+
+  /* spacing */
+  --spacing-xs: 8px;
+  --spacing-s: 16px;
+  --spacing-m: 24px;
+  --spacing-l: 40px;
+  --spacing-xl: 64px;
+  --spacing-xxl: 80px;
+
+  /* buttons */
+  --button-border-radius: 50px;
+  --button-padding: 13px 25px;
+  --button-border-width: 2px;
+  --button-font-weight: 500;
+  --button-font-size: 15px;
+  --button-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  /* layout */
+  --section-max-width: 1200px;
+
+  /* transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+
+  /* focus */
+  --focus-outline: 2px solid var(--color-blue);
+  --focus-outline-offset: 2px;
 }
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: plus-jakarta-sans-fallback;
+  size-adjust: 100%;
   src: local('Arial');
 }
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    /* heading sizes - desktop */
+    --heading-font-size-xxl: 56px;
+    --heading-font-size-xl: 48px;
+    --heading-font-size-l: 36px;
+    --heading-font-size-m: 28px;
+    --heading-font-size-s: 24px;
+    --heading-font-size-xs: 20px;
   }
 }
 
@@ -79,7 +107,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 body.appear {
@@ -106,6 +134,7 @@ footer .footer[data-block-status="loaded"] {
   }
 }
 
+/* headings */
 h1,
 h2,
 h3,
@@ -115,9 +144,10 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 500;
+  line-height: 1.15;
   scroll-margin: 40px;
+  color: var(--dark-color);
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -166,6 +196,7 @@ a:any-link {
   color: var(--link-color);
   text-decoration: none;
   word-break: break-word;
+  transition: color var(--transition-base);
 }
 
 a:hover {
@@ -173,50 +204,79 @@ a:hover {
   text-decoration: underline;
 }
 
-/* buttons */
+a:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  border-radius: 2px;
+}
+
+/* buttons - primary (filled) */
 a.button:any-link,
 button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: var(--button-border-width) solid var(--dark-color);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--button-font-weight);
+  font-size: var(--button-font-size);
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
+  background-color: var(--dark-color);
   color: var(--background-color);
   cursor: pointer;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: var(--button-transition);
 }
 
 a.button:hover,
-a.button:focus,
+a.button:focus-visible,
 button:hover,
-button:focus {
-  background-color: var(--link-hover-color);
+button:focus-visible {
+  background-color: var(--color-blue-dark);
+  border-color: var(--color-blue-dark);
+  color: var(--background-color);
   cursor: pointer;
+}
+
+a.button:focus-visible,
+button:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--dark-color);
   cursor: unset;
+  opacity: 0.6;
 }
 
+/* buttons - secondary (outlined) */
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: transparent;
+  border: var(--button-border-width) solid var(--dark-color);
+  color: var(--dark-color);
 }
 
+a.button.secondary:hover,
+a.button.secondary:focus-visible,
+button.secondary:hover,
+button.secondary:focus-visible {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+}
+
+/* images */
 main img {
   max-width: 100%;
   width: auto;
@@ -240,7 +300,7 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--section-max-width);
   margin: auto;
   padding: 0 24px;
 }
@@ -255,10 +315,83 @@ main > .section:first-of-type {
   }
 }
 
-/* section metadata */
+/* section metadata variants */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section.dark {
+  background-color: var(--color-blue);
+  color: #fff;
+  margin: 0;
+  padding: var(--spacing-xl) 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: #fff;
+}
+
+main .section.dark a:any-link {
+  color: #fff;
+}
+
+main .section.dark a.button:any-link {
+  border-color: #fff;
+  background-color: transparent;
+  color: #fff;
+}
+
+main .section.dark a.button:hover {
+  background-color: #fff;
+  color: var(--color-blue);
+}
+
+main .section.accent-pink {
+  background-color: var(--color-red-extra-light);
+  margin: 0;
+  padding: var(--spacing-xl) 0;
+}
+
+main .section.light-blue {
+  background-color: var(--color-blue-extra-light);
+  margin: 0;
+  padding: var(--spacing-xl) 0;
+}
+
+main .section.magenta-light {
+  background-color: var(--color-magenta-extra-light);
+  margin: 0;
+  padding: var(--spacing-xl) 0;
+}
+
+/* form elements */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  color: var(--dark-color);
+  background-color: var(--background-color);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px rgb(0 115 230 / 15%);
+  outline: none;
 }
