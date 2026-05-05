@@ -7,9 +7,9 @@
   padding: 0;
 }
 
-/* When carousel directly follows hero, remove gap */
+/* When carousel directly follows hero, hide it (hero already shows primary slide) */
 .hero-container + .carousel-container {
-  margin-top: 0;
+  display: none;
 }
 
 .carousel .carousel-slides-container {
@@ -207,13 +207,3 @@
   }
 }
 
-/* Match hero height when following hero */
-.hero-container + .carousel-container .carousel .carousel-slide {
-  min-height: 450px;
-}
-
-@media (width >= 900px) {
-  .hero-container + .carousel-container .carousel .carousel-slide {
-    min-height: 620px;
-  }
-}

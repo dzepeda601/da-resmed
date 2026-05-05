@@ -1,95 +1,163 @@
+/* Teaser block - full-width hero style when first on page */
+.teaser-container:first-of-type {
+  margin: 0;
+}
+
+.teaser-container:first-of-type .teaser-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
 .teaser {
   position: relative;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 0;
+  min-height: 450px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .teaser .teaser-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   line-height: 0;
 }
 
 .teaser .teaser-image picture {
   display: block;
+  height: 100%;
 }
 
 .teaser .teaser-image img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
 .teaser .teaser-content {
-  padding: 32px 24px;
+  position: relative;
+  z-index: 1;
+  padding: 80px 24px 60px;
+  max-width: 560px;
 }
 
+.teaser .teaser-content h1,
 .teaser .teaser-content h2,
 .teaser .teaser-content h3 {
+  color: #fff;
   margin-top: 0;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 500;
+  line-height: 1.07;
 }
 
 .teaser .teaser-content p {
   margin: 0 0 16px;
-  color: var(--text-color);
+  color: #fff;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
 }
 
-.teaser .teaser-content a {
+.teaser .teaser-content .button-container {
+  display: inline-block;
+  margin: 8px 12px 8px 0;
+}
+
+.teaser .teaser-content a.button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: var(--button-border-width) solid var(--dark-color);
+  border: 2px solid #fff;
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
-  color: var(--dark-color);
+  color: #fff;
   background-color: transparent;
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
   text-decoration: none;
   transition: var(--button-transition);
+  margin: 0;
 }
 
-.teaser .teaser-content a:hover {
-  background-color: var(--dark-color);
-  color: #fff;
+.teaser .teaser-content a.button:hover {
+  background-color: #fff;
+  color: var(--dark-color);
   text-decoration: none;
 }
 
-/* Dark variant for use in dark sections */
-.section.dark .teaser .teaser-content h2,
-.section.dark .teaser .teaser-content h3 {
+/* Non-hero teaser (not first on page) */
+.teaser-container:not(:first-of-type) .teaser {
+  min-height: unset;
+  border-radius: 16px;
+}
+
+.teaser-container:not(:first-of-type) .teaser .teaser-image {
+  position: relative;
+}
+
+.teaser-container:not(:first-of-type) .teaser .teaser-image img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.teaser-container:not(:first-of-type) .teaser .teaser-content {
+  padding: 32px 24px;
+}
+
+.teaser-container:not(:first-of-type) .teaser .teaser-content h2,
+.teaser-container:not(:first-of-type) .teaser .teaser-content h3 {
+  color: var(--dark-color);
+  font-size: var(--heading-font-size-xl);
+}
+
+.teaser-container:not(:first-of-type) .teaser .teaser-content p {
+  color: var(--text-color);
+}
+
+.teaser-container:not(:first-of-type) .teaser .teaser-content a.button {
+  border-color: var(--dark-color);
+  color: var(--dark-color);
+}
+
+.teaser-container:not(:first-of-type) .teaser .teaser-content a.button:hover {
+  background-color: var(--dark-color);
   color: #fff;
-}
-
-.section.dark .teaser .teaser-content p {
-  color: rgb(255 255 255 / 90%);
-}
-
-.section.dark .teaser .teaser-content a {
-  border-color: #fff;
-  color: #fff;
-}
-
-.section.dark .teaser .teaser-content a:hover {
-  background-color: #fff;
-  color: var(--color-blue);
 }
 
 @media (width >= 900px) {
   .teaser {
+    min-height: 620px;
+    padding: 0;
+  }
+
+  .teaser .teaser-content {
+    padding: 100px 92px 80px;
+    max-width: 50%;
+  }
+
+  .teaser .teaser-content h1,
+  .teaser .teaser-content h2 {
+    font-size: 64px;
+    line-height: 1.05;
+  }
+
+  .teaser-container:not(:first-of-type) .teaser {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     border-radius: 24px;
   }
 
-  .teaser .teaser-image img {
+  .teaser-container:not(:first-of-type) .teaser .teaser-image img {
     aspect-ratio: unset;
     min-height: 400px;
   }
 
-  .teaser .teaser-content {
+  .teaser-container:not(:first-of-type) .teaser .teaser-content {
     padding: 48px;
+    max-width: unset;
   }
 }
