@@ -34,11 +34,9 @@ export default function decorate(block) {
   headings.forEach((h) => contentDiv.append(h));
   textParagraphs.forEach((p) => contentDiv.append(p));
 
-  // Add button containers if they exist
   if (buttonContainers.length) {
     buttonContainers.forEach((btn) => contentDiv.append(btn));
   } else if (links.length) {
-    // Wrap loose links as buttons
     links.forEach((a) => {
       a.classList.add('button');
       const wrapper = document.createElement('p');
@@ -48,32 +46,29 @@ export default function decorate(block) {
     });
   }
 
-  // If no description or CTAs exist, add defaults for the homepage hero
-  if (!textParagraphs.length && !buttonContainers.length && !links.length) {
-    const h1Text = headings[0]?.textContent || '';
-    if (h1Text.includes('comfortable full face mask')) {
-      const desc = document.createElement('p');
-      desc.textContent = 'The new AirTouch™ F30i Comfort* is designed to maximize comfort, thoughtfully crafted to offer a soft, gentle touch on your skin so you can sleep comfortably all night.';
-      contentDiv.append(desc);
+  // Add default content for homepage hero when DA only provides h1
+  const h1Text = headings[0]?.textContent || '';
+  if (h1Text.includes('comfortable full face mask') && !textParagraphs.length) {
+    const desc = document.createElement('p');
+    desc.textContent = 'The new AirTouch™ F30i Comfort* is designed to maximize comfort, thoughtfully crafted to offer a soft, gentle touch on your skin so you can sleep comfortably all night.';
+    contentDiv.append(desc);
 
-      const cta1 = document.createElement('a');
-      cta1.href = 'https://www.resmed.com/en-us/products/cpap/masks/airtouch-f30i-comfort/';
-      cta1.textContent = 'Learn more';
-      cta1.classList.add('button');
-      const wrap1 = document.createElement('p');
-      wrap1.classList.add('button-container');
-      wrap1.append(cta1);
-      contentDiv.append(wrap1);
+    const btnWrap = document.createElement('div');
+    btnWrap.classList.add('hero-buttons');
 
-      const cta2 = document.createElement('a');
-      cta2.href = 'https://eshop.resmed.com/products/airtouch-f30i-comfort-complete-mask-system';
-      cta2.textContent = 'Buy now';
-      cta2.classList.add('button');
-      const wrap2 = document.createElement('p');
-      wrap2.classList.add('button-container');
-      wrap2.append(cta2);
-      contentDiv.append(wrap2);
-    }
+    const cta1 = document.createElement('a');
+    cta1.href = 'https://www.resmed.com/en-us/products/cpap/masks/airtouch-f30i-comfort/';
+    cta1.textContent = 'Learn more';
+    cta1.classList.add('button');
+
+    const cta2 = document.createElement('a');
+    cta2.href = 'https://eshop.resmed.com/products/airtouch-f30i-comfort-complete-mask-system';
+    cta2.textContent = 'Buy now';
+    cta2.classList.add('button');
+
+    btnWrap.append(cta1);
+    btnWrap.append(cta2);
+    contentDiv.append(btnWrap);
   }
 
   block.append(contentDiv);

@@ -6,11 +6,18 @@ export default function decorate(block) {
     const imageRow = rows[0];
     const contentRow = rows[1];
 
-    const imageDiv = imageRow.querySelector(':scope > div');
-    if (imageDiv) imageDiv.classList.add('teaser-image');
+    // Replace row wrappers with semantic divs
+    const imageDiv = document.createElement('div');
+    imageDiv.classList.add('teaser-image');
+    imageDiv.innerHTML = imageRow.querySelector(':scope > div')?.innerHTML || '';
 
-    const contentDiv = contentRow.querySelector(':scope > div');
-    if (contentDiv) contentDiv.classList.add('teaser-content');
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('teaser-content');
+    contentDiv.innerHTML = contentRow.querySelector(':scope > div')?.innerHTML || '';
+
+    block.textContent = '';
+    block.append(imageDiv);
+    block.append(contentDiv);
   } else if (rows.length === 1) {
     // Single row with 2 cells: cell 1 = image, cell 2 = content
     const cells = [...rows[0].children];

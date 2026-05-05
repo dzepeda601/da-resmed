@@ -1,3 +1,8 @@
+/* Hide teaser when it follows hero (content is in hero block) */
+.hero-container + .teaser-container {
+  display: none;
+}
+
 /* Teaser block - full-width hero style when first on page */
 .teaser-container:first-of-type {
   margin: 0;
@@ -12,9 +17,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  min-height: 450px;
-  display: flex;
-  align-items: flex-end;
+  min-height: 500px;
 }
 
 .teaser .teaser-image {
@@ -27,6 +30,7 @@
 .teaser .teaser-image picture {
   display: block;
   height: 100%;
+  width: 100%;
 }
 
 .teaser .teaser-image img {
@@ -41,6 +45,10 @@
   z-index: 1;
   padding: 80px 24px 60px;
   max-width: 560px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .teaser .teaser-content h1,
