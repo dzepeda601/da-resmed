@@ -1,3 +1,17 @@
+.carousel-container {
+  margin-top: -40px;
+}
+
+.carousel-container .carousel-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+/* When carousel directly follows hero, remove gap */
+.hero-container + .carousel-container {
+  margin-top: 0;
+}
+
 .carousel .carousel-slides-container {
   position: relative;
 }
@@ -29,9 +43,10 @@
   justify-content: flex-end;
   position: relative;
   width: 100%;
-  min-height: 450px;
-  padding: 60px 24px;
+  min-height: 500px;
+  padding: 80px 24px 60px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .carousel .carousel-slide .carousel-slide-image picture {
@@ -171,7 +186,7 @@
 
 @media (width >= 600px) {
   .carousel .carousel-slide {
-    min-height: 550px;
+    min-height: 580px;
     padding: 80px 60px;
   }
 
@@ -183,11 +198,22 @@
 
 @media (width >= 900px) {
   .carousel .carousel-slide {
-    min-height: 650px;
+    min-height: 620px;
     padding: 100px 92px;
   }
 
   .carousel .carousel-slide .carousel-slide-content {
     max-width: 50%;
+  }
+}
+
+/* Match hero height when following hero */
+.hero-container + .carousel-container .carousel .carousel-slide {
+  min-height: 450px;
+}
+
+@media (width >= 900px) {
+  .hero-container + .carousel-container .carousel .carousel-slide {
+    min-height: 620px;
   }
 }
