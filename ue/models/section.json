@@ -24,6 +24,22 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Accent Pink",
+              "value": "accent-pink"
+            },
+            {
+              "name": "Light Blue",
+              "value": "light-blue"
+            },
+            {
+              "name": "Magenta Light",
+              "value": "magenta-light"
             }
           ]
         }
@@ -47,6 +63,7 @@
         "search",
         "tabs",
         "table",
+        "teaser",
         "text",
         "video",
         "product-recommendations"
